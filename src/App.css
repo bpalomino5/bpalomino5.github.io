@@ -8,25 +8,52 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 50px;
-  padding: 20px;
-  color: white;
+  background-color: white;
+  height: 180px;
+  padding: 30px;
+  color: black;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 1.8em;
+  margin-bottom: 50px;
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navMenu {
+  display: flex;
+  flex: none;
+  flex-direction: row;
+}
+.menuitemBox {
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.menuItem {
+  color: black;
+  padding-right: 18px;
+}
+
+.menuItem:hover {
+  color: black;
+  cursor: pointer;
+  text-decoration-line: none;
+}
+
+.homeStyle {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+}
+
+.aboutSection {
+  padding: 50px;
+  background-color: rgb(181, 219, 219);
 }
