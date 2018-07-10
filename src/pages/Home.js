@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import "../styles/Home.css";
 import linkedlogo from "../res/linkedin.png";
-import { Image, Label } from "react-bootstrap";
+import githublogo from "../res/github.png";
+import { SizeMe } from "react-sizeme";
+import { Icon } from "react-icons-kit";
+import { menu } from "react-icons-kit/iconic/";
 
-const NavMenu = () => {
+const NavMenu = ({ width }) => {
+  return <div>{width > 650 ? <FullNavMenu /> : <MobileNavMenu />}</div>;
+};
+
+const FullNavMenu = () => {
   return (
     <div className="navMenu">
       <div className="header">
@@ -16,9 +23,39 @@ const NavMenu = () => {
           <a className="menuItem">Experience</a>
           <a className="menuItem">Portfolio</a>
         </div>
+        <div className="gitlogoContainer">
+          <a href="https://github.com/bpalomino5">
+            <img src={githublogo} alt="gitlogo" width="70px" />
+          </a>
+        </div>
         <a href="https://www.linkedin.com/in/brandon-palomino/">
-          <img src={linkedlogo} alt="logo" width="40px" />
+          <img src={linkedlogo} alt="logo" width="35px" />
         </a>
+      </div>
+    </div>
+  );
+};
+
+const MobileNavMenu = () => {
+  return (
+    <div className="mobileNav">
+      <div className="topRow">
+        <div className="mobileHeader">
+          <h1 className="title">Brandon Palomino</h1>
+        </div>
+        <div className="iconContainer">
+          <Icon icon={menu} size={25} />
+        </div>
+      </div>
+      <div className="logoRow">
+        <a href="https://github.com/bpalomino5">
+          <img src={githublogo} alt="gitlogo" width="60px" />
+        </a>
+        <div className="linkedlogoContainer">
+          <a href="https://www.linkedin.com/in/brandon-palomino/">
+            <img src={linkedlogo} alt="logo" width="30px" />
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -28,7 +65,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container">
-        <NavMenu />
+        <SizeMe>{({ size }) => <NavMenu width={size.width} />}</SizeMe>
         <div className="homeStyle">
           <div className="aboutSection">
             <h3 align="left">About</h3>

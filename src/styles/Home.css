@@ -10,8 +10,7 @@
 }
 
 .title {
-  /* font-size: 1.8em; */
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 
 .navMenu {
@@ -19,6 +18,45 @@
   flex-direction: column;
   background-color: white;
   padding: 30px;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+}
+
+.topRow {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+}
+
+.mobileHeader {
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.iconContainer {
+  /* background-color: red; */
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 15px;
+  /* align-self: flex-end; */
+  margin-bottom: 12px;
+}
+
+.logoRow {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.linkedlogoContainer {
+  margin-left: 8px;
+  margin-bottom: 2px;
 }
 
 .fullBar {
@@ -33,7 +71,11 @@
   flex: auto;
   flex-direction: row;
   justify-content: center;
-  margin-left: 30px;
+  margin-left: 120px;
+}
+
+.gitlogoContainer {
+  margin-right: 8px;
 }
 
 .menuItem {
