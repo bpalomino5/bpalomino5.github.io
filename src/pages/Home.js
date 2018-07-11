@@ -7,7 +7,11 @@ import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/iconic/";
 
 const NavMenu = ({ width }) => {
-  return <div>{width > 650 ? <FullNavMenu /> : <MobileNavMenu />}</div>;
+  return (
+    <div className="StickyContainer">
+      {width > 650 ? <FullNavMenu /> : <MobileNavMenu />}
+    </div>
+  );
 };
 
 const FullNavMenu = () => {
@@ -41,13 +45,13 @@ const MobileNavMenu = () => {
     <div className="mobileNav">
       <div className="topRow">
         <div className="mobileHeader">
-          <h1 className="title">Brandon Palomino</h1>
+          <h1 className="mobileTitle">B. Palomino</h1>
         </div>
         <div className="iconContainer">
           <Icon icon={menu} size={25} />
         </div>
       </div>
-      <div className="logoRow">
+      {/* <div className="logoRow">
         <a href="https://github.com/bpalomino5">
           <img src={githublogo} alt="gitlogo" width="60px" />
         </a>
@@ -56,7 +60,7 @@ const MobileNavMenu = () => {
             <img src={linkedlogo} alt="logo" width="30px" />
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

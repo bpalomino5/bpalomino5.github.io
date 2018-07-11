@@ -9,8 +9,14 @@
   text-align: center;
 }
 
-.title {
-  /* margin-bottom: 50px; */
+.mobileTitle {
+  font-size: 1.9em;
+}
+
+.StickyContainer {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
 }
 
 .navMenu {
@@ -23,13 +29,13 @@
 .mobileNav {
   display: flex;
   flex-direction: column;
-  height: 130px;
+  padding-bottom: 10px;
+  background-color: white;
 }
 
 .topRow {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-around; */
 }
 
 .mobileHeader {
@@ -38,13 +44,11 @@
 }
 
 .iconContainer {
-  /* background-color: red; */
   display: flex;
   flex: 1;
   justify-content: flex-end;
   align-items: flex-end;
   padding-right: 15px;
-  /* align-self: flex-end; */
   margin-bottom: 12px;
 }
 
