@@ -10,7 +10,8 @@
     "react-dom": "^16.4.1",
     "react-icons-kit": "^1.1.5",
     "react-scripts": "1.1.4",
-    "react-sizeme": "^2.5.2"
+    "react-sizeme": "^2.5.2",
+    "semantic-ui-react": "^0.82.0"
   },
   "scripts": {
     "start": "react-scripts start",

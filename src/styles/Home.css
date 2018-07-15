@@ -29,7 +29,8 @@
 .mobileNav {
   display: flex;
   flex-direction: column;
-  padding-bottom: 10px;
+  padding-top: 18px;
+  padding-bottom: 5px;
   background-color: white;
 }
 
@@ -49,7 +50,26 @@
   justify-content: flex-end;
   align-items: flex-end;
   padding-right: 15px;
-  margin-bottom: 12px;
+  padding-bottom: 8px;
+}
+
+.sidebarRawContainer {
+  background-color: rgb(51, 51, 51);
+  display: flex;
+}
+
+.sidebarContainer {
+  display: flex;
+  flex: 1;
+  /* background-color: red; */
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.sideTopBar {
+  padding-right: 5px;
+  /* background-color: blue; */
+  color: white;
 }
 
 .logoRow {

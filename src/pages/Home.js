@@ -5,11 +5,21 @@ import githublogo from "../res/github.png";
 import { SizeMe } from "react-sizeme";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/iconic/";
+import { ic_close } from "react-icons-kit/md/";
+import { Sidebar, Segment, SidebarPushable } from "semantic-ui-react";
 
-const NavMenu = ({ width }) => {
+const NavMenu = ({ width, onMenuClick, sidebarVisible, handleHide }) => {
   return (
     <div className="StickyContainer">
-      {width > 650 ? <FullNavMenu /> : <MobileNavMenu />}
+      {width > 650 ? (
+        <FullNavMenu />
+      ) : (
+        <MobileNavMenu
+          onMenuClick={onMenuClick}
+          sidebarVisible={sidebarVisible}
+          handleHide={handleHide}
+        />
+      )}
     </div>
   );
 };
@@ -40,36 +50,72 @@ const FullNavMenu = () => {
   );
 };
 
-const MobileNavMenu = () => {
+const MobileNavMenu = ({ onMenuClick, sidebarVisible, handleHide }) => {
   return (
-    <div className="mobileNav">
-      <div className="topRow">
-        <div className="mobileHeader">
-          <h1 className="mobileTitle">B. Palomino</h1>
+    <div>
+      <Sidebar
+        as={Segment}
+        animation="overlay"
+        visible={sidebarVisible}
+        vertical
+        inverted
+        width="wide"
+      >
+        <div className="sidebarContainer">
+          <div className="sideTopBar" oncClick={() => console.log("hi")}>
+            <Icon icon={ic_close} size={25} />
+          </div>
         </div>
-        <div className="iconContainer">
-          <Icon icon={menu} size={25} />
+      </Sidebar>
+      <Sidebar.Pusher>
+        <div className="mobileNav">
+          <div className="topRow">
+            <div className="mobileHeader">
+              <h1 className="mobileTitle">B. Palomino</h1>
+            </div>
+            <div className="iconContainer">
+              <div onClick={onMenuClick}>
+                <Icon icon={menu} size={25} />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      {/* <div className="logoRow">
-        <a href="https://github.com/bpalomino5">
-          <img src={githublogo} alt="gitlogo" width="60px" />
-        </a>
-        <div className="linkedlogoContainer">
-          <a href="https://www.linkedin.com/in/brandon-palomino/">
-            <img src={linkedlogo} alt="logo" width="30px" />
-          </a>
-        </div>
-      </div> */}
+      </Sidebar.Pusher>
     </div>
   );
 };
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sidebarVisible: false
+    };
+    this.toggleSideBar = this.toggleSideBar.bind(this);
+    this.handleHide = this.handleHide.bind(this);
+  }
+
+  toggleSideBar() {
+    this.setState({ sidebarVisible: !this.state.sidebarVisible });
+  }
+
+  handleHide() {
+    this.setState({ sidebarVisible: false });
+  }
+
   render() {
     return (
       <div className="container">
-        <SizeMe>{({ size }) => <NavMenu width={size.width} />}</SizeMe>
+        <SizeMe>
+          {({ size }) => (
+            <NavMenu
+              width={size.width}
+              onMenuClick={this.toggleSideBar}
+              sidebarVisible={this.state.sidebarVisible}
+              handleHide={this.handleHide}
+            />
+          )}
+        </SizeMe>
         <div className="homeStyle">
           <div className="aboutSection">
             <h3 align="left">About</h3>
