@@ -47,22 +47,49 @@
 }
 
 .sidebarRawContainer {
-  background-color: rgb(51, 51, 51);
+  /* background-color: white; */
   display: flex;
+  flex: 1;
 }
 
 .sidebarContainer {
   display: flex;
   flex: 1;
-  /* background-color: red; */
-  justify-content: flex-end;
-  align-items: flex-start;
+  background-color: rgb(51, 51, 51);
+  flex-direction: column;
 }
 
 .sideTopBar {
-  padding-right: 5px;
-  /* background-color: blue; */
+  display: flex;
+  flex: 0 1 auto;
+}
+
+.filler {
+  display: flex;
+  flex: 1;
+}
+
+.iconSection {
+  display: flex;
+  flex: 0 1 auto;
   color: white;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.navSection {
+  display: flex;
+  flex: 1;
+  padding: 30px;
+  color: white;
+  flex-direction: column;
+}
+
+.menuItemContainer {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .logoRow {

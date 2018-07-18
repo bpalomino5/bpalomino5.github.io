@@ -4,8 +4,9 @@ import linkedlogo from "../res/linkedin.png";
 import githublogo from "../res/github.png";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/iconic/";
-import { ic_close } from "react-icons-kit/md/";
-import { Sidebar, Segment, Responsive } from "semantic-ui-react";
+import { ic_home, ic_close } from "react-icons-kit/md/";
+import { books, list2, spinner4 } from "react-icons-kit/icomoon/";
+import { Sidebar, Responsive } from "semantic-ui-react";
 
 const DesktopNavMenu = ({ children }) => {
   return (
@@ -40,16 +41,27 @@ const MobileNavMenu = ({ onMenuClick, sidebarVisible, children }) => {
   return (
     <div>
       <Sidebar
-        as={Segment}
+        as={"div"}
         animation="overlay"
         visible={sidebarVisible}
         vertical
         inverted
         width="wide"
+        className="sidebarRawContainer"
       >
         <div className="sidebarContainer">
-          <div className="sideTopBar" onClick={onMenuClick}>
-            <Icon icon={ic_close} size={25} />
+          <div className="sideTopBar">
+            <div className="filler" />
+            <div className="iconSection" onClick={onMenuClick}>
+              <Icon icon={ic_close} size={25} />
+            </div>
+          </div>
+          <div className="navSection">
+            <h3 style={{ marginBottom: 30 }}>Navigation</h3>
+            <MenuItem icon={ic_home} name="Home" />
+            <MenuItem icon={books} name="Education" />
+            <MenuItem icon={list2} name="Experience" />
+            <MenuItem icon={spinner4} name="Portfolio" />
           </div>
         </div>
       </Sidebar>
@@ -58,7 +70,7 @@ const MobileNavMenu = ({ onMenuClick, sidebarVisible, children }) => {
           <div className="mobileNav StickyContainer">
             <div className="topRow">
               <div className="mobileHeader">
-                <h1 className="mobileTitle">B. Palomino</h1>
+                <h1 className="mobileTitle">Brandon Palomino</h1>
               </div>
               <div className="iconContainer">
                 <div onClick={onMenuClick}>
@@ -70,6 +82,17 @@ const MobileNavMenu = ({ onMenuClick, sidebarVisible, children }) => {
           {children}
         </div>
       </Sidebar.Pusher>
+    </div>
+  );
+};
+
+const MenuItem = ({ icon, name }) => {
+  return (
+    <div className="menuItemContainer">
+      <div style={{ paddingRight: 10 }}>
+        <Icon icon={icon} size={25} />
+      </div>
+      {name}
     </div>
   );
 };
