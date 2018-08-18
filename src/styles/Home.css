@@ -10,11 +10,6 @@
   flex-direction: column;
 }
 
-.aboutSection {
-  padding: 50px;
-  background-color: rgb(181, 219, 219);
-}
-
 .contactSection {
   padding: 50px;
 }

@@ -92,6 +92,10 @@
   margin-bottom: 20px;
 }
 
+.menuItemContainer:hover {
+  background-color: grey;
+}
+
 .logoRow {
   display: flex;
   flex-direction: row;
@@ -131,4 +135,11 @@
   color: black;
   cursor: pointer;
   text-decoration-line: none;
+}
+
+.placeAtBottom {
+  display: flex;
+  color: white;
+  flex: 1;
+  align-items: flex-end;
 }

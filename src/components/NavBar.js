@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "../styles/NavBar.css";
+import inmobile from "../res/inmobile.png";
+import gitmobile from "../res/gitmobile.png";
 import linkedlogo from "../res/linkedin.png";
 import githublogo from "../res/github.png";
 import { Icon } from "react-icons-kit";
@@ -62,6 +64,17 @@ const MobileNavMenu = ({ onMenuClick, sidebarVisible, children }) => {
             <MenuItem icon={books} name="Education" />
             <MenuItem icon={list2} name="Experience" />
             <MenuItem icon={spinner4} name="Portfolio" />
+            <div className="placeAtBottom">
+              <a
+                style={{ marginRight: 15 }}
+                href="https://www.linkedin.com/in/brandon-palomino/"
+              >
+                <img src={inmobile} alt="linmlogo" width="45px" />
+              </a>
+              <a href="https://github.com/bpalomino5">
+                <img src={gitmobile} alt="mobilelogo" width="45px" />
+              </a>
+            </div>
           </div>
         </div>
       </Sidebar>
@@ -89,7 +102,7 @@ const MobileNavMenu = ({ onMenuClick, sidebarVisible, children }) => {
 const MenuItem = ({ icon, name }) => {
   return (
     <div className="menuItemContainer">
-      <div style={{ paddingRight: 10 }}>
+      <div style={{ paddingLeft: 10, paddingRight: 10 }}>
         <Icon icon={icon} size={25} />
       </div>
       {name}

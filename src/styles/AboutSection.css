@@ -1,0 +1,16 @@
+.aboutSection {
+  display: flex;
+  flex: 1;
+  padding: 50px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  /* background-color: rgb(181, 219, 219); */
+  background-color: #9cc7d1;
+}
+
+.imageContainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin-right: 25px;
+}
