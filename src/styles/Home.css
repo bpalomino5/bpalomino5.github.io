@@ -31,7 +31,8 @@
 }
 
 .topTitle {
-  filter: brightness(70%);
+  color: #9c9999;
+  /* filter: brightness(70%); */
   font-size: 2.2em;
   justify-content: center;
   align-items: flex-end;
@@ -56,9 +57,17 @@
 .sHeading {
   color: white;
   background-color: #212529;
-  padding: 50px;
-  padding-top: 200px;
+  justify-content: center;
+  align-items: center;
   height: 500px;
   text-align: center;
+}
+
+.sTop {
   font-size: 5em;
+}
+
+.sBottom {
+  color: #9c9999;
+  font-size: 1.9em;
 }

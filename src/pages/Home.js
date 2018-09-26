@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import "../styles/Home.css";
 import AboutSection from "../components/AboutSection";
-import { Menu, Button, Responsive, Visibility } from "semantic-ui-react";
+import {
+  Menu,
+  Button,
+  Responsive,
+  Visibility,
+  Transition,
+  Grid
+} from "semantic-ui-react";
 
 const ResponsiveContainer = ({ children }) => {
   return (
@@ -59,12 +66,14 @@ class DesktopContainer extends Component {
 }
 
 const TopBar = ({ fixed }) => {
+  let color = !fixed ? "transparent" : "rgba(1,1,1,0.7)";
   return (
     <Menu
-      inverted={!fixed}
+      borderless
+      inverted
       secondary={!fixed}
       size="massive"
-      style={{ padding: 10 }}
+      style={{ padding: 10, backgroundColor: color }}
       fixed={fixed ? "top" : null}
     >
       <Menu.Item>
@@ -92,10 +101,71 @@ const FirstBanner = () => (
   </div>
 );
 
+const LanguageBox = ({ title, description }) => (
+  <div style={{ textAlign: "center" }}>
+    <div style={{ fontSize: "2.5em" }}>{title}</div>
+    <div style={{ fontSize: "1.2em" }}>{description}</div>
+  </div>
+);
+
 const SoftwareSection = () => (
-  <div className="homeStyle sHeading">
-    <div>Software</div>
-    <div>Development</div>
+  <div className="homeStyle">
+    <div className="homeStyle sHeading">
+      <div className="sTop">Software</div>
+      <div className="sBottom">DEVELOPMENT</div>
+    </div>
+    {/* <div
+      style={{
+        display: "flex",
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: 50
+      }}
+    > */}
+    <Grid columns={3}>
+      <Grid.Row>
+        <Grid.Column>
+          <LanguageBox
+            title="Java"
+            description="4 years of object-oriented design of user interfaces, graphics, & games."
+          />
+        </Grid.Column>
+        <Grid.Column>
+          <LanguageBox
+            title="C++"
+            description="5 years of algorithm design, architecture management, & interaces."
+          />
+        </Grid.Column>
+        <Grid.Column>
+          <LanguageBox
+            title="Python"
+            description="4 years of algorithm & data analysis, simulations, & prototyping."
+          />
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>
+          <LanguageBox
+            title="Web"
+            description="2 years in UX/UI design, HTML, CSS, JS with Bootstrap."
+          />
+        </Grid.Column>
+        <Grid.Column>
+          <LanguageBox
+            title="Mobile"
+            description="3 years designing scalable Android & IOS apps with some full featured releases."
+          />
+        </Grid.Column>
+        <Grid.Column>
+          <LanguageBox
+            title="Frameworks"
+            description="1 year working with ReactJS, React Native, Google Firebase, Heroku Cloud"
+          />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+    {/* </div> */}
   </div>
 );
 
@@ -118,12 +188,6 @@ export default class Home extends Component {
         <FirstBanner />
         <AboutSection />
         <SoftwareSection />
-        <div className="contactSection" style={{ height: 500 }}>
-          <h3 align="left">Let's Connect</h3>
-          <br />
-          12bpalomino@gmail.com
-          <br />
-        </div>
       </ResponsiveContainer>
     );
   }
