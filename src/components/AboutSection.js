@@ -6,17 +6,19 @@ import { Responsive } from "semantic-ui-react";
 const AboutContent = () => {
   return (
     <div>
-      <h3 align="left">Preface</h3>
-      <p align="left">
+      <h3 align="left" style={{ fontWeight: 350 }}>
+        Preface
+      </h3>
+      <p align="left" style={{ fontSize: "1em" }}>
         <br />
-        Welcome to my world. My life is filled with diversity amongst language,
-        activities, and within my career. I constantly share my rich, hard
-        earned knowledge and skills as a means to spread awareness, excitement,
-        and passion for my craft with others. I self-motivate myself to achieve
-        the best principles and practices of Software Engineering, Code
-        Development, and the full blown user experience. My execution,
-        organization, and creativitiy defines my confidence in any practical
-        situation that I have gone through, with only a hunger to achieve more.
+        My life is filled with diversity amongst my career, language, and
+        activities. I share my knowledge and skills as a means to spread
+        awareness, excitement, and passion for my craft with others.
+        <br />
+        <br />I strive to achieve the best principles and practices of Software
+        Engineering and the User Experience. My execution, organization, and
+        creativitiy defines my confidence in any practical situation that I have
+        gone through, with only a hunger to achieve more.
         <br />
         <br />
         <br />
@@ -33,13 +35,17 @@ export default class AboutSection extends Component {
     return (
       <div>
         <Responsive minWidth={651}>
-          <div className="aboutSection" style={{ flexDirection: "row" }}>
+          <div
+            className="aboutSection"
+            style={{
+              flexDirection: "row"
+            }}
+          >
             <div className="imageContainer">
               <Image
                 src={require("../res/brandon.jpg")}
-                width="180px"
-                height="180px"
-                circle
+                width="280px"
+                height="280px"
               />
             </div>
             <AboutContent />

@@ -6,6 +6,7 @@
 }
 
 .homeStyle {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -14,13 +15,13 @@
   padding: 50px;
 }
 
-.headerImage {
-  /* filter: brightness(50%); */
-  /* margin: 0 auto; */
-  /* width: 100vw; */
-  /* object-fit: cover; */
-  display: flex;
-  flex-direction: column;
+.tHeaderTextStyle {
+  font-size: 2em;
+  font-weight: 350;
+}
+
+.tbTextStyle {
+  font-size: 1em;
 }
 
 .topStyle {
@@ -35,15 +36,29 @@
   justify-content: center;
   align-items: flex-end;
   margin-bottom: 10px;
-  font-weight: 100;
-  font-family: "Lato", sans-serif;
 }
 
 .topDescription {
-  margin-bottom: 80px;
+  margin-bottom: 200px;
   align-self: center;
   text-align: center;
   font-size: 6em;
-  font-weight: 100;
-  font-family: "Lato", sans-serif;
+}
+
+.firstBanner {
+  margin: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-align: center;
+  font-size: 2.8em;
+}
+
+.sHeading {
+  color: white;
+  background-color: #212529;
+  padding: 50px;
+  padding-top: 200px;
+  height: 500px;
+  text-align: center;
+  font-size: 5em;
 }
