@@ -22,6 +22,12 @@
 
 .tbTextStyle {
   font-size: 1em;
+  font-weight: 100;
+}
+
+.mbTextStyle {
+  font-size: 1.3em;
+  font-weight: 100;
 }
 
 .topStyle {

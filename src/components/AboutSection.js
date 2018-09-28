@@ -65,7 +65,6 @@ export default class AboutSection extends Component {
                 src={require("../res/brandon.jpg")}
                 width="180px"
                 height="180px"
-                circle
               />
             </div>
             <AboutContent />
