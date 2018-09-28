@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../styles/Home.css";
 import AboutSection from "../components/AboutSection";
+import SoftwareSection from "../components/SoftwareSection";
 import {
   Menu,
   Button,
@@ -10,46 +11,16 @@ import {
   Segment,
   Icon
 } from "semantic-ui-react";
-import StackGrid from "react-stack-grid";
 import { Fade } from "react-bootstrap";
+import scrollToComponent from "react-scroll-to-component";
 
-const LanguageInfo = [
-  {
-    title: "Java",
-    description:
-      "4 years of object-oriented design of user interfaces, graphics, & games."
-  },
-  {
-    title: "C++",
-    description:
-      "5 years of algorithm design, architecture management, & interfaces."
-  },
-  {
-    title: "Python",
-    description:
-      "4 years of algorithm & data analysis, simulations, & prototyping."
-  },
-  {
-    title: "Web",
-    description: "2 years in UX/UI design, HTML, CSS, JS with Bootstrap."
-  },
-  {
-    title: "Mobile",
-    description:
-      "3 years designing scalable Android & IOS apps with some full featured releases with Android SDK & React"
-  },
-  {
-    title: "Tools & Frameworks",
-    description:
-      "2 years working with NodeJS, Express, MySQL, ReactJS, React Native, Google Firebase, Heroku Cloud, Amazon Web Services"
-  }
-];
-
-const ResponsiveContainer = ({ children }) => {
+const ResponsiveContainer = ({ children, aboutClicked }) => {
   return (
     <div>
-      <DesktopContainer>{children}</DesktopContainer>
-      <MobileContainer>{children}</MobileContainer>
+      <DesktopContainer aboutClicked={aboutClicked}>
+        {children}
+      </DesktopContainer>
+      <MobileContainer aboutClicked={aboutClicked}>{children}</MobileContainer>
     </div>
   );
 };
@@ -88,8 +59,6 @@ class DesktopContainer extends Component {
   render() {
     const { children } = this.props;
     const { fixed, fade } = this.state;
-    let height = window.innerHeight;
-    let topSectionH = height - 20;
 
     return (
       <Responsive minWidth={641}>
@@ -101,7 +70,7 @@ class DesktopContainer extends Component {
           <div
             className="homeStyle"
             style={{
-              height: topSectionH,
+              height: "97vh",
               background: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(${require("../res/bg2.jpg")})`,
               backgroundSize: "cover",
               backgroundPosition: "center"
@@ -112,7 +81,11 @@ class DesktopContainer extends Component {
               onBottomPassed={this.hideFade}
               onBottomPassedReverse={this.showFade}
             >
-              <TopBar fixed={fixed} fade={fade} />
+              <TopBar
+                fixed={fixed}
+                fade={fade}
+                aboutClicked={this.props.aboutClicked}
+              />
             </Visibility>
             <HomePageHeading />
           </div>
@@ -156,7 +129,14 @@ class MobileContainer extends Component {
             <Menu.Item as="a" style={{ marginBottom: 10 }}>
               <div className="mbTextStyle">WORK</div>
             </Menu.Item>
-            <Menu.Item as="a" style={{ marginBottom: 10 }}>
+            <Menu.Item
+              as="a"
+              style={{ marginBottom: 10 }}
+              onClick={() => {
+                this.handlePusherClick();
+                setTimeout(this.props.aboutClicked.bind(this), 500);
+              }}
+            >
               <div className="mbTextStyle">ABOUT</div>
             </Menu.Item>
             <Button
@@ -169,7 +149,6 @@ class MobileContainer extends Component {
               </div>
             </Button>
           </Sidebar>
-
           <Sidebar.Pusher
             dimmed={sidebarOpened}
             onClick={this.handlePusherClick}
@@ -209,7 +188,6 @@ class MobileContainer extends Component {
                 <HomePageHeading mobile />
               </div>
             </Segment>
-
             {children}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
@@ -218,7 +196,7 @@ class MobileContainer extends Component {
   }
 }
 
-const TopBar = ({ fixed, fade }) => {
+const TopBar = ({ fixed, fade, aboutClicked }) => {
   let color = !fixed ? "transparent" : "rgba(1,1,1,0.7)";
   return (
     <Fade in={fade}>
@@ -237,7 +215,7 @@ const TopBar = ({ fixed, fade }) => {
           <Menu.Item as="a">
             <div className="tbTextStyle">WORK</div>
           </Menu.Item>
-          <Menu.Item as="a">
+          <Menu.Item as="a" onClick={aboutClicked}>
             <div className="tbTextStyle">ABOUT</div>
           </Menu.Item>
           <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
@@ -251,54 +229,23 @@ const TopBar = ({ fixed, fade }) => {
   );
 };
 
-const LanguageBox = ({ title, description }) => (
-  <div style={{ textAlign: "center" }}>
-    <div style={{ fontSize: "2.5em" }}>{title}</div>
-    <div style={{ fontSize: "1.2em" }}>{description}</div>
-  </div>
-);
-
-const SoftwareSection = () => (
-  <div className="homeStyle" style={{ backgroundColor: "white" }}>
-    <div className="homeStyle sHeading">
-      <div className="sTop">Software</div>
-      <div className="sBottom">DEVELOPMENT</div>
-    </div>
-    <StackGrid
-      columnWidth={400}
-      gutterWidth={50}
-      gutterHeight={50}
-      style={{ marginTop: 40 }}
-    >
-      {LanguageInfo.map((item, i) => (
-        <LanguageBox
-          key={i}
-          title={item.title}
-          description={item.description}
-        />
-      ))}
-    </StackGrid>
-    <div
-      style={{
-        flex: 1,
-        display: "flex",
-        justifyContent: "center",
-        paddingTop: 30,
-        paddingBottom: 30
-      }}
-    >
-      <Button basic color="black" size="massive">
-        Learn More
-      </Button>
-    </div>
-  </div>
-);
-
 export default class Home extends Component {
   render() {
     return (
-      <ResponsiveContainer>
-        <AboutSection />
+      <ResponsiveContainer
+        aboutClicked={() =>
+          scrollToComponent(this.About, {
+            offset: 1,
+            align: "top",
+            duration: 500
+          })
+        }
+      >
+        <AboutSection
+          ref={aboutRef => {
+            this.About = aboutRef;
+          }}
+        />
         <SoftwareSection />
       </ResponsiveContainer>
     );

@@ -1,0 +1,25 @@
+.sHeading {
+  color: white;
+  background-color: #212529;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sTopLarge {
+  font-size: 5em;
+}
+
+.sTopSmall {
+  font-size: 3.5em;
+}
+
+.sBottomSmall {
+  color: #9c9999;
+  font-size: 1.5em;
+}
+
+.sBottomLarge {
+  color: #9c9999;
+  font-size: 1.9em;
+}
