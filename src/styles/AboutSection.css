@@ -1,3 +1,14 @@
+.aboutContainer {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.aboutContainerMobile {
+  padding: 20px;
+}
+
 .aboutSection {
   display: flex;
   flex: 1;
@@ -11,6 +22,14 @@
 .imageContainer {
   display: flex;
   flex: 1;
-  align-items: center;
+  /* align-items: center; */
   padding-right: 40px;
+}
+
+.bannerStyle {
+  padding: 17px;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 100;
+  line-height: 1.2em;
 }

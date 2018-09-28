@@ -64,7 +64,13 @@ const HomePageHeading = ({ mobile }) => (
     </div>
     <div
       className="topStyle topDescription"
-      style={{ fontSize: mobile ? "3.5em" : "6em" }}
+      style={{
+        fontSize: mobile ? "3.5em" : "5em",
+        paddingBottom: mobile ? 96 : 200,
+        paddingLeft: mobile ? 0 : 32,
+        paddingRight: mobile ? 0 : 32,
+        paddingTop: mobile ? 0 : 0
+      }}
     >
       Insight, Innovation, & <br /> Technology.
     </div>
@@ -83,10 +89,10 @@ class DesktopContainer extends Component {
     const { children } = this.props;
     const { fixed, fade } = this.state;
     let height = window.innerHeight;
-    let topSectionH = height - 50;
+    let topSectionH = height - 20;
 
     return (
-      <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+      <Responsive minWidth={641}>
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -134,10 +140,11 @@ class MobileContainer extends Component {
     const { sidebarOpened } = this.state;
 
     return (
-      <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
+      <Responsive maxWidth={640}>
         <Sidebar.Pushable>
           <Sidebar
             as={Menu}
+            duration={300}
             animation="uncover"
             inverted
             vertical
@@ -168,17 +175,30 @@ class MobileContainer extends Component {
             onClick={this.handlePusherClick}
             style={{ minHeight: "100vh" }}
           >
-            <Segment style={{ minHeight: 350, padding: "0em 0em" }} vertical>
+            <Segment
+              style={{
+                minHeight: 350,
+                padding: "0em 0em",
+                display: "flex",
+                flex: 1
+              }}
+              vertical
+              basic
+            >
               <div
                 className="homeStyle"
                 style={{
-                  // height: topSectionH,
                   background: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(${require("../res/bg2.jpg")})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center"
                 }}
               >
-                <Menu inverted secondary size="large" style={{ padding: 10 }}>
+                <Menu
+                  inverted
+                  secondary
+                  size="large"
+                  style={{ paddingTop: 10 }}
+                >
                   <Menu.Item>
                     <div className="tHeaderTextStyle">PALOMINO</div>
                   </Menu.Item>
@@ -231,13 +251,6 @@ const TopBar = ({ fixed, fade }) => {
   );
 };
 
-const FirstBanner = () => (
-  <div className="firstBanner">
-    My passion is mastering existing technologies and elevating them to the next
-    level.
-  </div>
-);
-
 const LanguageBox = ({ title, description }) => (
   <div style={{ textAlign: "center" }}>
     <div style={{ fontSize: "2.5em" }}>{title}</div>
@@ -246,16 +259,16 @@ const LanguageBox = ({ title, description }) => (
 );
 
 const SoftwareSection = () => (
-  <div className="homeStyle">
+  <div className="homeStyle" style={{ backgroundColor: "white" }}>
     <div className="homeStyle sHeading">
       <div className="sTop">Software</div>
       <div className="sBottom">DEVELOPMENT</div>
     </div>
     <StackGrid
       columnWidth={400}
-      gutterWidth={100}
-      gutterHeight={100}
-      style={{ margin: 50 }}
+      gutterWidth={50}
+      gutterHeight={50}
+      style={{ marginTop: 40 }}
     >
       {LanguageInfo.map((item, i) => (
         <LanguageBox
@@ -282,22 +295,9 @@ const SoftwareSection = () => (
 );
 
 export default class Home extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     sidebarVisible: false
-  //   };
-  //   this.toggleSideBar = this.toggleSideBar.bind(this);
-  // }
-
-  // toggleSideBar() {
-  //   this.setState({ sidebarVisible: !this.state.sidebarVisible });
-  // }
-
   render() {
     return (
       <ResponsiveContainer>
-        <FirstBanner />
         <AboutSection />
         <SoftwareSection />
       </ResponsiveContainer>
