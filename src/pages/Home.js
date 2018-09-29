@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Home.css";
+import NavBar from "../components/NavBar";
 import AboutSection from "../components/AboutSection";
 import SoftwareSection from "../components/SoftwareSection";
 import {
@@ -8,11 +9,31 @@ import {
   Responsive,
   Visibility,
   Sidebar,
-  Segment,
-  Icon
+  Segment
 } from "semantic-ui-react";
-import { Fade } from "react-bootstrap";
 import scrollToComponent from "react-scroll-to-component";
+
+const AnimateLoad = (WrappedComponent, preAnimate, posAnimate, toggleFlex) => {
+  return class extends Component {
+    state = { didMount: false };
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState({ didMount: true });
+      }, 0);
+    }
+    render() {
+      const { didMount } = this.state;
+      return (
+        <div
+          className={`${toggleFlex && "homeStyle"} ${preAnimate} ${didMount &&
+            posAnimate}`}
+        >
+          <WrappedComponent {...this.props} />
+        </div>
+      );
+    }
+  };
+};
 
 const ResponsiveContainer = ({ children, aboutClicked }) => {
   return (
@@ -27,25 +48,38 @@ const ResponsiveContainer = ({ children, aboutClicked }) => {
 
 const HomePageHeading = ({ mobile }) => (
   <div className="homeStyle">
-    <div
-      className="topStyle topTitle"
-      style={{ fontSize: mobile ? "2em" : "2.2em" }}
-    >
+    <div className={`topStyle topTitle ${mobile ? "mobile" : "desktop"}`}>
       BRANDON PALOMINO
     </div>
-    <div
-      className="topStyle topDescription"
-      style={{
-        fontSize: mobile ? "3.5em" : "5em",
-        paddingBottom: mobile ? 96 : 200,
-        paddingLeft: mobile ? 0 : 32,
-        paddingRight: mobile ? 0 : 32,
-        paddingTop: mobile ? 0 : 0
-      }}
-    >
+    <div className={`topStyle topDescription ${mobile ? "mobile" : "desktop"}`}>
       Insight, Innovation, & <br /> Technology.
     </div>
   </div>
+);
+
+const HomePageHeadingwithAnimate = AnimateLoad(
+  HomePageHeading,
+  "fade-in",
+  "visible",
+  true
+);
+
+const NavBarDeskAnimate = AnimateLoad(NavBar, "mfade-in", "visible", true);
+const NavBarMobileAnimate = AnimateLoad(NavBar, "mfade-in", "visible", false);
+
+const SegmentwithImage = ({ children, mobile }) => {
+  return (
+    <div className={`homeStyle sg-image-style ${!mobile && "desktop"}`}>
+      {children}
+    </div>
+  );
+};
+
+const SegmentwithImageAnimate = AnimateLoad(
+  SegmentwithImage,
+  "mfade-in",
+  "ifade-in",
+  true
 );
 
 class DesktopContainer extends Component {
@@ -67,28 +101,20 @@ class DesktopContainer extends Component {
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
-          <div
-            className="homeStyle"
-            style={{
-              height: "97vh",
-              background: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(${require("../res/bg2.jpg")})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}
-          >
+          <SegmentwithImageAnimate>
             <Visibility
               once={false}
               onBottomPassed={this.hideFade}
               onBottomPassedReverse={this.showFade}
             >
-              <TopBar
+              <NavBarDeskAnimate
                 fixed={fixed}
                 fade={fade}
                 aboutClicked={this.props.aboutClicked}
               />
             </Visibility>
-            <HomePageHeading />
-          </div>
+            <HomePageHeadingwithAnimate />
+          </SegmentwithImageAnimate>
         </Visibility>
         {children}
       </Responsive>
@@ -124,7 +150,7 @@ class MobileContainer extends Component {
             direction="right"
             visible={sidebarOpened}
             borderless
-            style={{ padding: 20 }}
+            style={{ padding: 20, backgroundColor: "#212529" }}
           >
             <Menu.Item as="a" style={{ marginBottom: 10 }}>
               <div className="mbTextStyle">WORK</div>
@@ -164,29 +190,10 @@ class MobileContainer extends Component {
               vertical
               basic
             >
-              <div
-                className="homeStyle"
-                style={{
-                  background: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(${require("../res/bg2.jpg")})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center"
-                }}
-              >
-                <Menu
-                  inverted
-                  secondary
-                  size="large"
-                  style={{ paddingTop: 10 }}
-                >
-                  <Menu.Item>
-                    <div className="tHeaderTextStyle">PALOMINO</div>
-                  </Menu.Item>
-                  <Menu.Item position="right" onClick={this.handleToggle}>
-                    <Icon size="big" name="sidebar" />
-                  </Menu.Item>
-                </Menu>
-                <HomePageHeading mobile />
-              </div>
+              <SegmentwithImageAnimate mobile>
+                <NavBarMobileAnimate mobile handleToggle={this.handleToggle} />
+                <HomePageHeadingwithAnimate mobile />
+              </SegmentwithImageAnimate>
             </Segment>
             {children}
           </Sidebar.Pusher>
@@ -195,39 +202,6 @@ class MobileContainer extends Component {
     );
   }
 }
-
-const TopBar = ({ fixed, fade, aboutClicked }) => {
-  let color = !fixed ? "transparent" : "rgba(1,1,1,0.7)";
-  return (
-    <Fade in={fade}>
-      <Menu
-        borderless
-        inverted
-        secondary
-        size="massive"
-        style={{ padding: 10, backgroundColor: color }}
-        fixed={fixed ? "top" : null}
-      >
-        <Menu.Item>
-          <div className="tHeaderTextStyle">PALOMINO</div>
-        </Menu.Item>
-        <Menu.Item position="right">
-          <Menu.Item as="a">
-            <div className="tbTextStyle">WORK</div>
-          </Menu.Item>
-          <Menu.Item as="a" onClick={aboutClicked}>
-            <div className="tbTextStyle">ABOUT</div>
-          </Menu.Item>
-          <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-            <div className="tbTextStyle" style={{ padding: 4 }}>
-              CONTACT
-            </div>
-          </Button>
-        </Menu.Item>
-      </Menu>
-    </Fade>
-  );
-};
 
 export default class Home extends Component {
   render() {

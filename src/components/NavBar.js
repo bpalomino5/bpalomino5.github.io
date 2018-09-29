@@ -1,129 +1,71 @@
 import React, { Component } from "react";
 import "../styles/NavBar.css";
-import inmobile from "../res/inmobile.png";
-import gitmobile from "../res/gitmobile.png";
-import linkedlogo from "../res/linkedin.png";
-import githublogo from "../res/github.png";
-import { Icon } from "react-icons-kit";
-import { menu } from "react-icons-kit/iconic/";
-import { ic_home, ic_close } from "react-icons-kit/md/";
-import { books, list2, spinner4 } from "react-icons-kit/icomoon/";
-import { Sidebar, Responsive } from "semantic-ui-react";
+// import { Icon } from "react-icons-kit";
+import { Menu, Button, Icon } from "semantic-ui-react";
+import { Fade } from "react-bootstrap";
 
-const DesktopNavMenu = ({ children }) => {
+const DesktopContainer = ({ fixed, fade, aboutClicked }) => {
   return (
-    <div>
-      <div className="navMenu StickyContainer">
-        <div className="header">
-          <h1 className="title">Brandon Palomino</h1>
-        </div>
-        <div className="fullBar">
-          <div className="row1">
-            <a className="menuItem">Home</a>
-            <a className="menuItem">Education</a>
-            <a className="menuItem">Experience</a>
-            <a className="menuItem">Portfolio</a>
-          </div>
-          <div className="gitlogoContainer">
-            <a href="https://github.com/bpalomino5">
-              <img src={githublogo} alt="gitlogo" width="70px" />
-            </a>
-          </div>
-          <a href="https://www.linkedin.com/in/brandon-palomino/">
-            <img src={linkedlogo} alt="logo" width="35px" />
-          </a>
-        </div>
-      </div>
-      {children}
-    </div>
-  );
-};
-
-const MobileNavMenu = ({ onMenuClick, sidebarVisible, children }) => {
-  return (
-    <div>
-      <Sidebar
-        as={"div"}
-        animation="overlay"
-        visible={sidebarVisible}
-        vertical
+    <Fade in={fade}>
+      <Menu
+        borderless
         inverted
-        width="wide"
-        className="sidebarRawContainer"
+        secondary
+        size="massive"
+        style={{
+          padding: 10,
+          backgroundColor: !fixed ? "transparent" : "rgba(1,1,1,0.7)"
+        }}
+        fixed={fixed ? "top" : null}
       >
-        <div className="sidebarContainer">
-          <div className="sideTopBar">
-            <div className="filler" />
-            <div className="iconSection" onClick={onMenuClick}>
-              <Icon icon={ic_close} size={25} />
+        <Menu.Item>
+          <div className="tHeaderTextStyle">PALOMINO</div>
+        </Menu.Item>
+        <Menu.Item position="right">
+          <Menu.Item as="a">
+            <div className="tbTextStyle">WORK</div>
+          </Menu.Item>
+          <Menu.Item as="a" onClick={aboutClicked}>
+            <div className="tbTextStyle">ABOUT</div>
+          </Menu.Item>
+          <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
+            <div className="tbTextStyle" style={{ padding: 4 }}>
+              CONTACT
             </div>
-          </div>
-          <div className="navSection">
-            <h3 style={{ marginBottom: 30 }}>Navigation</h3>
-            <MenuItem icon={ic_home} name="Home" />
-            <MenuItem icon={books} name="Education" />
-            <MenuItem icon={list2} name="Experience" />
-            <MenuItem icon={spinner4} name="Portfolio" />
-            <div className="placeAtBottom">
-              <a
-                style={{ marginRight: 15 }}
-                href="https://www.linkedin.com/in/brandon-palomino/"
-              >
-                <img src={inmobile} alt="linmlogo" width="45px" />
-              </a>
-              <a href="https://github.com/bpalomino5">
-                <img src={gitmobile} alt="mobilelogo" width="45px" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </Sidebar>
-      <Sidebar.Pusher>
-        <div>
-          <div className="mobileNav StickyContainer">
-            <div className="topRow">
-              <div className="mobileHeader">
-                <h1 className="mobileTitle">Brandon Palomino</h1>
-              </div>
-              <div className="iconContainer">
-                <div onClick={onMenuClick}>
-                  <Icon icon={menu} size={25} />
-                </div>
-              </div>
-            </div>
-          </div>
-          {children}
-        </div>
-      </Sidebar.Pusher>
-    </div>
+          </Button>
+        </Menu.Item>
+      </Menu>
+    </Fade>
   );
 };
 
-const MenuItem = ({ icon, name }) => {
+const MobileContainer = ({ handleToggle }) => {
   return (
-    <div className="menuItemContainer">
-      <div style={{ paddingLeft: 10, paddingRight: 10 }}>
-        <Icon icon={icon} size={25} />
-      </div>
-      {name}
-    </div>
+    <Menu inverted secondary size="large" style={{ paddingTop: 10 }}>
+      <Menu.Item>
+        <div className="tHeaderTextStyle">PALOMINO</div>
+      </Menu.Item>
+      <Menu.Item position="right" onClick={handleToggle}>
+        <Icon size="big" name="sidebar" />
+      </Menu.Item>
+    </Menu>
   );
 };
 
 export default class NavBar extends Component {
   render() {
+    const { mobile, handleToggle, fixed, fade, aboutClicked } = this.props;
     return (
       <div>
-        <Responsive minWidth={651}>
-          <DesktopNavMenu children={this.props.children} />
-        </Responsive>
-        <Responsive maxWidth={650}>
-          <MobileNavMenu
-            onMenuClick={this.props.onMenuClick}
-            sidebarVisible={this.props.sidebarVisible}
-            children={this.props.children}
+        {mobile ? (
+          <MobileContainer handleToggle={handleToggle} />
+        ) : (
+          <DesktopContainer
+            fixed={fixed}
+            fade={fade}
+            aboutClicked={aboutClicked}
           />
-        </Responsive>
+        )}
       </div>
     );
   }

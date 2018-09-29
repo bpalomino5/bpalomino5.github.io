@@ -59,7 +59,7 @@ export default class SoftwareSection extends Component {
           </div>
         </div>
         <StackGrid
-          columnWidth={400}
+          columnWidth={320}
           gutterWidth={50}
           gutterHeight={50}
           style={{ marginTop: 40 }}
