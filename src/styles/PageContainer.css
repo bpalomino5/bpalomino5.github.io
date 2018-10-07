@@ -1,0 +1,112 @@
+.fade-in {
+  position: relative;
+  opacity: 0;
+  bottom: -10px;
+}
+
+.fade-in.visible {
+  position: relative;
+  transition: opacity 1s linear, bottom 0.1s linear;
+  opacity: 1;
+  bottom: 0px;
+  transition-delay: 0.3s;
+}
+
+.mfade-in {
+  opacity: 0;
+}
+
+.mfade-in.visible {
+  transition: opacity 0.2s linear;
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+.ifade-in {
+  transition: opacity 0.2s ease-out;
+  opacity: 1;
+}
+
+/* .sg-image-style {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../res/bg2.jpg);
+  background-size: cover;
+  background-position: center;
+} */
+
+.sg-image-style.desktop {
+  height: 97vh;
+}
+
+.homeStyle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactSection {
+  padding: 50px;
+}
+
+.mbTextStyle {
+  font-size: 1.3em;
+  font-weight: 100;
+}
+
+.btn-area {
+  display: flex;
+  flex: 1;
+}
+
+.btn-style {
+  padding: 8px;
+  font-size: 1.2em;
+  font-weight: 100;
+}
+
+.btn-area.mobile {
+  padding-bottom: 30px;
+}
+
+.btn-area.desktop {
+  padding-bottom: 20px;
+}
+
+.topStyle {
+  color: white;
+  display: flex;
+  flex: 1;
+}
+
+.topTitle {
+  color: #9c9999;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.topTitle.mobile {
+  font-size: 2em;
+}
+
+.topTitle.desktop {
+  font-size: 2.2em;
+}
+
+.topDescription {
+  align-self: center;
+  text-align: center;
+  /* background-color: blue; */
+}
+
+.topDescription.mobile {
+  font-size: 3.5em;
+  padding-bottom: 0px;
+}
+
+.topDescription.desktop {
+  font-size: 5em;
+  padding-bottom: 0px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
