@@ -33,28 +33,47 @@ const AnimateLoad = (WrappedComponent, preAnimate, posAnimate, toggleFlex) => {
   };
 };
 
-const HomePageHeading = ({ mobile, moreClicked }) => (
+const HomePageHeading = ({
+  mobile,
+  title,
+  description,
+  subtitle,
+  moreClicked
+}) => (
   <div className="homeStyle">
-    <div className={`topStyle topTitle ${mobile ? "mobile" : "desktop"}`}>
-      BRANDON PALOMINO
+    {title && (
+      <div className={`topStyle topTitle ${mobile ? "mobile" : "desktop"}`}>
+        {title}
+      </div>
+    )}
+    <div
+      className={`topStyle topDescription ${
+        mobile ? "mobile" : "desktop"
+      } ${!title && "type2"}`}
+    >
+      {description}
     </div>
-    <div className={`topStyle topDescription ${mobile ? "mobile" : "desktop"}`}>
-      Insight, Innovation, & <br /> Technology.
-    </div>
-    <div className={`btn-area ${mobile ? "mobile" : "desktop"}`}>
-      <Button
-        basic
-        inverted
-        color="grey"
-        size={mobile ? "large" : "huge"}
-        style={{
-          margin: "auto"
-        }}
-        onClick={moreClicked}
-      >
-        <div className="btn-style">LEARN MORE</div>
-      </Button>
-    </div>
+    {subtitle && (
+      <div className={`topStyle topSubtitle ${mobile ? "mobile" : "desktop"}`}>
+        {subtitle}
+      </div>
+    )}
+    {moreClicked && (
+      <div className={`btn-area ${mobile ? "mobile" : "desktop"}`}>
+        <Button
+          basic
+          inverted
+          color="grey"
+          size={mobile ? "large" : "huge"}
+          style={{
+            margin: "auto"
+          }}
+          onClick={moreClicked}
+        >
+          <div className="btn-style">LEARN MORE</div>
+        </Button>
+      </div>
+    )}
   </div>
 );
 
@@ -118,7 +137,12 @@ class DesktopContainer extends Component {
             >
               <NavBarDeskAnimate fixed={fixed} fade={fade} />
             </Visibility>
-            <HomePageHeadingwithAnimate moreClicked={this.props.moreClicked} />
+            <HomePageHeadingwithAnimate
+              title={this.props.title}
+              description={this.props.description}
+              subtitle={this.props.subtitle}
+              moreClicked={this.props.moreClicked}
+            />
           </SegmentwithImageAnimate>
         </Visibility>
         {children}
@@ -200,6 +224,9 @@ class MobileContainer extends Component {
                 <NavBarMobileAnimate mobile handleToggle={this.handleToggle} />
                 <HomePageHeadingwithAnimate
                   mobile
+                  title={this.props.title}
+                  description={this.props.description}
+                  subtitle={this.props.subtitle}
                   moreClicked={this.props.moreClicked}
                 />
               </SegmentwithImageAnimate>

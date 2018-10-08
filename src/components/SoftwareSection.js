@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../styles/SoftwareSection.css";
 import StackGrid from "react-stack-grid";
+import SectionBanner from "../components/SectionBanner";
 import { Button } from "semantic-ui-react";
 
 const LanguageInfo = [
@@ -44,20 +45,9 @@ const LanguageBox = ({ title, description }) => (
 
 export default class SoftwareSection extends Component {
   render() {
-    let width = window.innerWidth;
     return (
       <div className="homeStyle" style={{ backgroundColor: "white" }}>
-        <div
-          className="homeStyle sHeading"
-          style={{ height: width < 641 ? "30vh" : "70vh" }}
-        >
-          <div className={`sTop${width < 641 ? "Small" : "Large"}`}>
-            Software
-          </div>
-          <div className={`sBottom${width < 641 ? "Small" : "Large"}`}>
-            DEVELOPMENT
-          </div>
-        </div>
+        <SectionBanner title="Software" subtitle="Development" />
         <StackGrid
           columnWidth={320}
           gutterWidth={50}

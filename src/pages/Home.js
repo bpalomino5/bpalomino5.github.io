@@ -9,6 +9,8 @@ export default class Home extends Component {
   render() {
     return (
       <PageContainer
+        title="Brandon Palomino"
+        description={"Insight, Innovation, & \n Technology."}
         topImage={require("../res/bg2.jpg")}
         moreClicked={() =>
           scrollToComponent(this.About, {
