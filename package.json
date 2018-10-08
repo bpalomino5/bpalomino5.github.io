@@ -9,6 +9,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-icons-kit": "^1.1.5",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-scroll-to-component": "^1.0.2",
     "react-sizeme": "^2.5.2",

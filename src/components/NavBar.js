@@ -3,6 +3,7 @@ import "../styles/NavBar.css";
 // import { Icon } from "react-icons-kit";
 import { Menu, Button, Icon } from "semantic-ui-react";
 import { Fade } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const DesktopContainer = ({ fixed, fade, aboutClicked }) => {
   return (
@@ -24,11 +25,11 @@ const DesktopContainer = ({ fixed, fade, aboutClicked }) => {
           </a>
         </Menu.Item>
         <Menu.Item position="right">
-          <Menu.Item as="a">
-            <div className="tbTextStyle">WORK</div>
+          <Menu.Item as={Link} to="/software">
+            <div className="tbTextStyle">SOFTWARE</div>
           </Menu.Item>
           <Menu.Item as="a">
-            <div className="tbTextStyle">ABOUT</div>
+            <div className="tbTextStyle">ELECTRONICS</div>
           </Menu.Item>
           <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
             <div className="tbTextStyle" style={{ padding: 4 }}>

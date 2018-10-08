@@ -183,7 +183,7 @@ class MobileContainer extends Component {
             style={{ padding: 20, backgroundColor: "#212529" }}
           >
             <Menu.Item as="a" style={{ marginBottom: 10 }}>
-              <div className="mbTextStyle">WORK</div>
+              <div className="mbTextStyle">SOFTWARE</div>
             </Menu.Item>
             <Menu.Item
               as="a"
@@ -193,7 +193,7 @@ class MobileContainer extends Component {
                 // setTimeout(this.props.aboutClicked.bind(this), 500);
               }}
             >
-              <div className="mbTextStyle">ABOUT</div>
+              <div className="mbTextStyle">ELECTRONICS</div>
             </Menu.Item>
             <Button
               as="a"

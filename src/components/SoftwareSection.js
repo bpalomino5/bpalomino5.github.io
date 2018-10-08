@@ -3,6 +3,7 @@ import "../styles/SoftwareSection.css";
 import StackGrid from "react-stack-grid";
 import SectionBanner from "../components/SectionBanner";
 import { Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const LanguageInfo = [
   {
@@ -71,9 +72,11 @@ export default class SoftwareSection extends Component {
             paddingBottom: 30
           }}
         >
-          <Button basic color="black" size="massive">
-            Learn More
-          </Button>
+          <Link to="/software">
+            <Button basic color="black" size="massive">
+              Learn More
+            </Button>
+          </Link>
         </div>
       </div>
     );
