@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 import "../styles/BottomBar.css";
+import { withRouter } from "react-router-dom";
 
-export default class BottomBar extends Component {
+class BottomBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      path: ""
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ path: this.props.location.pathname });
+  }
+
   render() {
     const { mobile } = this.props;
     return (
@@ -29,7 +42,7 @@ export default class BottomBar extends Component {
           <div className={`footer-inner ${mobile ? "mobile" : "desktop"}`}>
             {mobile && (
               <div className="back-to-top-nav">
-                <a href="/">Back to Top</a>
+                <a href={this.state.path}>Back to Top</a>
               </div>
             )}
             <div className={`siteInfo ${mobile ? "mobile" : "desktop"}`}>
@@ -51,3 +64,5 @@ export default class BottomBar extends Component {
     );
   }
 }
+
+export default withRouter(BottomBar);

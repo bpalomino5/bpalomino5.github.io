@@ -10,6 +10,7 @@ import {
   Sidebar,
   Segment
 } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const AnimateLoad = (WrappedComponent, preAnimate, posAnimate, toggleFlex) => {
   return class extends Component {
@@ -182,18 +183,11 @@ class MobileContainer extends Component {
             borderless
             style={{ padding: 20, backgroundColor: "#212529" }}
           >
-            <Menu.Item as="a" style={{ marginBottom: 10 }}>
-              <div className="mbTextStyle">SOFTWARE</div>
+            <Menu.Item as={Link} to="/software" style={{ marginBottom: 10 }}>
+              <div className="mbTextStyle">Software</div>
             </Menu.Item>
-            <Menu.Item
-              as="a"
-              style={{ marginBottom: 10 }}
-              onClick={() => {
-                this.handlePusherClick();
-                // setTimeout(this.props.aboutClicked.bind(this), 500);
-              }}
-            >
-              <div className="mbTextStyle">ELECTRONICS</div>
+            <Menu.Item as={Link} to="/electronics" style={{ marginBottom: 10 }}>
+              <div className="mbTextStyle">Electronics</div>
             </Menu.Item>
             <Button
               as="a"
@@ -201,7 +195,7 @@ class MobileContainer extends Component {
               style={{ marginLeft: "0.5em", marginTop: 5 }}
             >
               <div className="mbTextStyle" style={{ padding: 4 }}>
-                CONTACT
+                Contact
               </div>
             </Button>
           </Sidebar>

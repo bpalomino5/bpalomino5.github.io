@@ -4,6 +4,7 @@ import PageContainer from "../components/PageContainer";
 import AboutSection from "../components/AboutSection";
 import SoftwareSection from "../components/SoftwareSection";
 import scrollToComponent from "react-scroll-to-component";
+import ElectronicsSection from "../components/ElectronicsSection";
 
 export default class Home extends Component {
   render() {
@@ -26,6 +27,7 @@ export default class Home extends Component {
           }}
         />
         <SoftwareSection />
+        <ElectronicsSection />
       </PageContainer>
     );
   }

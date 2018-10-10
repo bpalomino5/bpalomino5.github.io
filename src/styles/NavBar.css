@@ -7,4 +7,5 @@
 .tbTextStyle {
   font-size: 1em;
   font-weight: 100;
+  text-transform: uppercase;
 }

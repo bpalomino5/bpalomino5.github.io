@@ -3,44 +3,65 @@ import "../styles/NavBar.css";
 // import { Icon } from "react-icons-kit";
 import { Menu, Button, Icon } from "semantic-ui-react";
 import { Fade } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
-const DesktopContainer = ({ fixed, fade, aboutClicked }) => {
-  return (
-    <Fade in={fade}>
-      <Menu
-        borderless
-        inverted
-        secondary
-        size="massive"
-        style={{
-          padding: 10,
-          backgroundColor: !fixed ? "transparent" : "rgba(33,37,41,0.9)"
-        }}
-        fixed={fixed ? "top" : null}
-      >
-        <Menu.Item>
-          <a href="/" className="tHeaderTextStyle">
-            PALOMINO
-          </a>
-        </Menu.Item>
-        <Menu.Item position="right">
-          <Menu.Item as={Link} to="/software">
-            <div className="tbTextStyle">SOFTWARE</div>
+class DesktopContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSoftware: false,
+      isElectronics: false
+    };
+  }
+
+  componentDidMount() {
+    // console.log(this.props);
+    if (this.props.location.pathname === "/software") {
+      this.setState({ isSoftware: true });
+    } else if (this.props.location.pathname === "/electronics") {
+      this.setState({ isElectronics: true });
+    }
+  }
+
+  render() {
+    const { fixed, fade } = this.props;
+    const { isSoftware, isElectronics } = this.state;
+    return (
+      <Fade in={fade}>
+        <Menu
+          borderless
+          inverted
+          secondary
+          size="massive"
+          style={{
+            padding: 10,
+            backgroundColor: !fixed ? "transparent" : "rgba(33,37,41,0.9)"
+          }}
+          fixed={fixed ? "top" : null}
+        >
+          <Menu.Item>
+            <a href="/" className="tHeaderTextStyle">
+              PALOMINO
+            </a>
           </Menu.Item>
-          <Menu.Item as="a">
-            <div className="tbTextStyle">ELECTRONICS</div>
+          <Menu.Item position="right">
+            <Menu.Item active={isSoftware} as={Link} to="/software">
+              <div className="tbTextStyle">Software</div>
+            </Menu.Item>
+            <Menu.Item active={isElectronics} as={Link} to="/electronics">
+              <div className="tbTextStyle">Electronics</div>
+            </Menu.Item>
+            <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
+              <div className="tbTextStyle" style={{ padding: 4 }}>
+                Contact
+              </div>
+            </Button>
           </Menu.Item>
-          <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-            <div className="tbTextStyle" style={{ padding: 4 }}>
-              CONTACT
-            </div>
-          </Button>
-        </Menu.Item>
-      </Menu>
-    </Fade>
-  );
-};
+        </Menu>
+      </Fade>
+    );
+  }
+}
 
 const MobileContainer = ({ handleToggle }) => {
   return (
@@ -57,7 +78,12 @@ const MobileContainer = ({ handleToggle }) => {
   );
 };
 
+const DesktopContainerWithRouter = withRouter(DesktopContainer);
+
 export default class NavBar extends Component {
+  componentDidMount() {
+    console.log(this.props);
+  }
   render() {
     const { mobile, handleToggle, fixed, fade, aboutClicked } = this.props;
     return (
@@ -65,7 +91,7 @@ export default class NavBar extends Component {
         {mobile ? (
           <MobileContainer handleToggle={handleToggle} />
         ) : (
-          <DesktopContainer
+          <DesktopContainerWithRouter
             fixed={fixed}
             fade={fade}
             aboutClicked={aboutClicked}

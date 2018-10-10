@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import "./styles/App.css";
+
 import Home from "./pages/Home";
 import Software from "./pages/Software";
+import Electronics from "./pages/Electronics";
+
 import { Switch, Route } from "react-router-dom";
-import "./styles/App.css";
 
 class App extends Component {
   render() {
@@ -10,6 +13,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/software" component={Software} />
+        <Route path="/electronics" component={Electronics} />
       </Switch>
     );
   }
