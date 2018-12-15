@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/NavBar.css";
+import "../../styles/NavBar.css";
 // import { Icon } from "react-icons-kit";
 import { Menu, Button, Icon } from "semantic-ui-react";
 import { Fade } from "react-bootstrap";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/Home.css";
-import PageContainer from "../components/PageContainer";
+import PageContainer from "../components/PageContainer/PageContainer";
 import AboutSection from "../components/AboutSection";
 import SoftwareSection from "../components/SoftwareSection";
 import scrollToComponent from "react-scroll-to-component";

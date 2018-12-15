@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageContainer from "../components/PageContainer";
+import PageContainer from "../components/PageContainer/PageContainer";
 
 export default class Software extends Component {
   render() {

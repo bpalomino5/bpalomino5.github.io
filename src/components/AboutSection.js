@@ -20,7 +20,7 @@ const MobilePrefaceContainer = () => (
           height="240px"
         />
       </div>
-      <AboutContent />
+      <AboutContent mobile />
     </div>
   </Responsive>
 );
@@ -79,13 +79,19 @@ const Banner = ({ mobile }) => (
   </div>
 );
 
-const AboutContent = () => {
+const AboutContent = ({ mobile }) => {
   return (
     <div>
       <h3 align="left" style={{ fontWeight: 350 }}>
         Preface
       </h3>
-      <p align="left" style={{ fontSize: "1em" }}>
+      <p
+        align="left"
+        style={{
+          fontSize: mobile ? "14px" : "15px",
+          lineHeight: "2"
+        }}
+      >
         <br />
         My life is filled with diversity amongst my career, language, and
         activities. I share my knowledge and skills as a means to spread

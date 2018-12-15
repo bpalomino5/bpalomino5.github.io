@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import "../styles/PageContainer.css";
-import NavBar from "../components/NavBar";
-import BottomBar from "../components/BottomBar";
+import "../../styles/PageContainer.css";
+import withAnimateLoad from "../wrappers/withAnimateLoad";
+import NavBar from "./NavBar";
+import BottomBar from "./BottomBar";
+import PageHeader from "./PageHeader";
+import PageSegment from "./PageSegment";
 import {
   Menu,
   Button,
@@ -12,103 +15,12 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-const AnimateLoad = (WrappedComponent, preAnimate, posAnimate, toggleFlex) => {
-  return class extends Component {
-    state = { didMount: false };
-    componentDidMount() {
-      setTimeout(() => {
-        this.setState({ didMount: true });
-      }, 0);
-    }
-    render() {
-      const { didMount } = this.state;
-      return (
-        <div
-          className={`${toggleFlex && "homeStyle"} ${preAnimate} ${didMount &&
-            posAnimate}`}
-        >
-          <WrappedComponent {...this.props} />
-        </div>
-      );
-    }
-  };
-};
-
-const HomePageHeading = ({
-  mobile,
-  title,
-  description,
-  subtitle,
-  moreClicked
-}) => (
-  <div className="homeStyle">
-    {title && (
-      <div className={`topStyle topTitle ${mobile ? "mobile" : "desktop"}`}>
-        {title}
-      </div>
-    )}
-    <div
-      className={`topStyle topDescription ${
-        mobile ? "mobile" : "desktop"
-      } ${!title && "type2"}`}
-    >
-      {description}
-    </div>
-    {subtitle && (
-      <div className={`topStyle topSubtitle ${mobile ? "mobile" : "desktop"}`}>
-        {subtitle}
-      </div>
-    )}
-    {moreClicked && (
-      <div className={`btn-area ${mobile ? "mobile" : "desktop"}`}>
-        <Button
-          basic
-          inverted
-          color="grey"
-          size={mobile ? "large" : "huge"}
-          style={{
-            margin: "auto"
-          }}
-          onClick={moreClicked}
-        >
-          <div className="btn-style">LEARN MORE</div>
-        </Button>
-      </div>
-    )}
-  </div>
-);
-
-const HomePageHeadingwithAnimate = AnimateLoad(
-  HomePageHeading,
-  "fade-in",
-  "visible",
-  true
-);
-
-const NavBarDeskAnimate = AnimateLoad(NavBar, "mfade-in", "visible", true);
-const NavBarMobileAnimate = AnimateLoad(NavBar, "mfade-in", "visible", false);
-
-const SegmentwithImage = ({ topImage, children, mobile }) => {
-  return (
-    <div
-      style={{
-        background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-      url(${topImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center"
-      }}
-      className={`homeStyle ${!mobile && "sg-image-style desktop"}`}
-    >
-      {children}
-    </div>
-  );
-};
-
-const SegmentwithImageAnimate = AnimateLoad(
-  SegmentwithImage,
+const NavBarDeskAnimate = withAnimateLoad(NavBar, "mfade-in", "visible", true);
+const NavBarMobileAnimate = withAnimateLoad(
+  NavBar,
   "mfade-in",
-  "ifade-in",
-  true
+  "visible",
+  false
 );
 
 class DesktopContainer extends Component {
@@ -130,7 +42,7 @@ class DesktopContainer extends Component {
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
-          <SegmentwithImageAnimate topImage={topImage}>
+          <PageSegment topImage={topImage}>
             <Visibility
               once={false}
               onBottomPassed={this.hideFade}
@@ -138,13 +50,13 @@ class DesktopContainer extends Component {
             >
               <NavBarDeskAnimate fixed={fixed} fade={fade} />
             </Visibility>
-            <HomePageHeadingwithAnimate
+            <PageHeader
               title={this.props.title}
               description={this.props.description}
               subtitle={this.props.subtitle}
               moreClicked={this.props.moreClicked}
             />
-          </SegmentwithImageAnimate>
+          </PageSegment>
         </Visibility>
         {children}
         <BottomBar />
@@ -214,16 +126,16 @@ class MobileContainer extends Component {
               vertical
               basic
             >
-              <SegmentwithImageAnimate topImage={topImage} mobile>
+              <PageSegment topImage={topImage} mobile>
                 <NavBarMobileAnimate mobile handleToggle={this.handleToggle} />
-                <HomePageHeadingwithAnimate
+                <PageHeader
                   mobile
                   title={this.props.title}
                   description={this.props.description}
                   subtitle={this.props.subtitle}
                   moreClicked={this.props.moreClicked}
                 />
-              </SegmentwithImageAnimate>
+              </PageSegment>
             </Segment>
             {children}
             <BottomBar mobile />

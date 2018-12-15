@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/BottomBar.css";
+import "../../styles/BottomBar.css";
 import { withRouter } from "react-router-dom";
 
 class BottomBar extends Component {
@@ -27,13 +27,15 @@ class BottomBar extends Component {
             >
               <img
                 className="bs-image-style"
-                src={require("../res/linkedin.png")}
+                alt="linkedin"
+                src={require("../../res/linkedin.png")}
               />
             </a>
             <a href="https://github.com/bpalomino5" className="iconWrapper">
               <img
                 className="bs-image-style"
-                src={require("../res/github.png")}
+                alt="git"
+                src={require("../../res/github.png")}
               />
             </a>
           </div>
