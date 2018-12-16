@@ -9,7 +9,7 @@ export default class SectionBanner extends Component {
       <div>
         <div
           className="homeStyle banner-style"
-          style={{ height: width < 641 ? "30vh" : "70vh" }}
+          style={{ height: width < 641 ? "35vh" : "70vh" }}
         >
           <div className={`title-style ${width < 641 ? "mobile" : "desktop"}`}>
             {title}

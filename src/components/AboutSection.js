@@ -53,7 +53,7 @@ const PrefaceSection = () => (
 );
 
 const DesktopContainer = () => (
-  <Responsive minWidth={641}>
+  <Responsive minWidth={730}>
     <div className="aboutContainer">
       <Banner />
       <PrefaceSection />
@@ -62,7 +62,7 @@ const DesktopContainer = () => (
 );
 
 const MobileContainer = () => (
-  <Responsive maxWidth={640}>
+  <Responsive maxWidth={729}>
     <div className="aboutContainerMobile">
       <Banner mobile />
       <PrefaceSection />

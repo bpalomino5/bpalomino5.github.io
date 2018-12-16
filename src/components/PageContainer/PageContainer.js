@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/PageContainer.css";
-import withAnimateLoad from "../wrappers/withAnimateLoad";
-import NavBar from "./NavBar";
+import { NavBarDesktop, NavBarMobile } from "./NavBar";
 import BottomBar from "./BottomBar";
 import PageHeader from "./PageHeader";
 import PageSegment from "./PageSegment";
@@ -14,14 +13,6 @@ import {
   Segment
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-
-const NavBarDeskAnimate = withAnimateLoad(NavBar, "mfade-in", "visible", true);
-const NavBarMobileAnimate = withAnimateLoad(
-  NavBar,
-  "mfade-in",
-  "visible",
-  false
-);
 
 class DesktopContainer extends Component {
   state = { fade: true };
@@ -36,7 +27,7 @@ class DesktopContainer extends Component {
     const { fixed, fade } = this.state;
 
     return (
-      <Responsive minWidth={641}>
+      <Responsive minWidth={730}>
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
@@ -48,7 +39,7 @@ class DesktopContainer extends Component {
               onBottomPassed={this.hideFade}
               onBottomPassedReverse={this.showFade}
             >
-              <NavBarDeskAnimate fixed={fixed} fade={fade} />
+              <NavBarDesktop fixed={fixed} fade={fade} />
             </Visibility>
             <PageHeader
               title={this.props.title}
@@ -82,7 +73,7 @@ class MobileContainer extends Component {
     const { sidebarOpened } = this.state;
 
     return (
-      <Responsive maxWidth={640}>
+      <Responsive maxWidth={729}>
         <Sidebar.Pushable>
           <Sidebar
             as={Menu}
@@ -127,7 +118,7 @@ class MobileContainer extends Component {
               basic
             >
               <PageSegment topImage={topImage} mobile>
-                <NavBarMobileAnimate mobile handleToggle={this.handleToggle} />
+                <NavBarMobile mobile handleToggle={this.handleToggle} />
                 <PageHeader
                   mobile
                   title={this.props.title}

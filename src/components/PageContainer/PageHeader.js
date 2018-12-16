@@ -3,7 +3,7 @@ import withAnimateLoad from "../wrappers/withAnimateLoad";
 import { Button } from "semantic-ui-react";
 
 const PageHeader = ({ mobile, title, description, subtitle, moreClicked }) => (
-  <div className="homeStyle">
+  <React.Fragment>
     {title && (
       <div className={`topStyle topTitle ${mobile ? "mobile" : "desktop"}`}>
         {title}
@@ -37,17 +37,7 @@ const PageHeader = ({ mobile, title, description, subtitle, moreClicked }) => (
         </Button>
       </div>
     )}
-  </div>
+  </React.Fragment>
 );
 
 export default withAnimateLoad(PageHeader, "fade-in", "visible", true);
-
-// export default class PageHeader extends Component {
-//   render() {
-//     return (
-//       <div>
-
-//       </div>
-//     )
-//   }
-// }

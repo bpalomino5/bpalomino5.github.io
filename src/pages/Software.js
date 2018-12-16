@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PageContainer from "../components/PageContainer/PageContainer";
+import ProjectSpace from "../components/Software/ProjectSpace";
 
 export default class Software extends Component {
   render() {
@@ -8,7 +9,9 @@ export default class Software extends Component {
         description={"Software"}
         subtitle="Engineering"
         topImage={require("../res/bg1.jpg")}
-      />
+      >
+        <ProjectSpace />
+      </PageContainer>
     );
   }
 }

@@ -4,6 +4,7 @@ import "../../styles/NavBar.css";
 import { Menu, Button, Icon } from "semantic-ui-react";
 import { Fade } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
+import withAnimateLoad from "../wrappers/withAnimateLoad";
 
 class DesktopContainer extends Component {
   constructor(props) {
@@ -80,10 +81,10 @@ const MobileContainer = ({ handleToggle }) => {
 
 const DesktopContainerWithRouter = withRouter(DesktopContainer);
 
-export default class NavBar extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
+class NavBar extends Component {
+  // componentDidMount() {
+  //   console.log(this.props);
+  // }
   render() {
     const { mobile, handleToggle, fixed, fade, aboutClicked } = this.props;
     return (
@@ -101,3 +102,8 @@ export default class NavBar extends Component {
     );
   }
 }
+
+const NavBarDesktop = withAnimateLoad(NavBar, "mfade-in", "visible", true);
+const NavBarMobile = withAnimateLoad(NavBar, "mfade-in", "visible", false);
+
+export { NavBarDesktop, NavBarMobile };
