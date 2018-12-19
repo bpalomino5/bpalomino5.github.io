@@ -1,0 +1,97 @@
+.page {
+  background-color: white;
+  padding: 96px 32px;
+}
+
+.page.mobile {
+  padding: 40px 20px;
+}
+
+.main-content {
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.entry {
+  text-align: center;
+}
+
+.entry.type2 {
+  margin-top: 128px;
+}
+
+.entry.type2.mobile {
+  margin-top: 80px;
+}
+
+.meta-above-title {
+  display: block;
+  text-align: center;
+}
+
+.meta-below-title {
+  display: block;
+  text-align: center;
+}
+
+.entry-header {
+  margin-bottom: 36px;
+  display: block;
+}
+
+.entry-header.mobile {
+  margin-bottom: 12px;
+}
+
+.entry-title {
+  font-weight: 300;
+  margin: 12px 0px;
+  color: #1c1c1c;
+}
+
+.entry-title.mobile {
+  font-size: 26px;
+}
+
+.entry-morefrom {
+  font-size: 16px;
+  color: rgba(31, 31, 31, 0.5);
+}
+
+.entry-byline {
+  font-size: 16px;
+  color: rgba(31, 31, 31, 0.5);
+  display: inline;
+}
+
+.entry-date::before {
+  content: "\00B7";
+  padding: 0 0.5em;
+}
+
+.entry-date {
+  font-size: 16px;
+  color: rgba(31, 31, 31, 0.5);
+  display: inline;
+}
+
+.block-content {
+  padding-left: 17px;
+  padding-right: 17px;
+  padding-bottom: 17px;
+  display: block;
+}
+
+.block-content.mobile {
+  padding: 17px 0px;
+}
+
+.block-content p {
+  letter-spacing: 0.1px;
+  color: #1f1f1f;
+  font-size: 16px;
+  line-height: 25.6px;
+  /* overflow-wrap: break-word; */
+  text-align: left;
+}
