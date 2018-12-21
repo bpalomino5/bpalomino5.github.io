@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "../styles/Home.css";
 import PageContainer from "../components/PageContainer/PageContainer";
-import AboutSection from "../components/AboutSection";
-import SoftwareSection from "../components/SoftwareSection";
+import AboutSection from "../components/sections/AboutSection";
+import SoftwareSection from "../components/sections/SoftwareSection";
 import scrollToComponent from "react-scroll-to-component";
-import ElectronicsSection from "../components/ElectronicsSection";
+import ElectronicsSection from "../components/sections/ElectronicsSection";
 
 export default class Home extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class Home extends Component {
       <PageContainer
         title="Brandon Palomino"
         description={"Insight, Innovation, & \n Technology."}
-        topImage={require("../res/bg2.jpg")}
+        topImage={require("../res/backgrounds/bg2.jpg")}
         moreClicked={() =>
           scrollToComponent(this.About, {
             offset: 1,

@@ -28,14 +28,14 @@ class BottomBar extends Component {
               <img
                 className="bs-image-style"
                 alt="linkedin"
-                src={require("../../res/linkedin.png")}
+                src={require("../../res/media/linkedin.png")}
               />
             </a>
             <a href="https://github.com/bpalomino5" className="iconWrapper">
               <img
                 className="bs-image-style"
                 alt="git"
-                src={require("../../res/github.png")}
+                src={require("../../res/media/github.png")}
               />
             </a>
           </div>
