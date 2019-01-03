@@ -19,7 +19,7 @@ const entries = [
     date: "May 2017 - June 2018",
     link: "https://github.com/bpalomino5/B.U.R.T.O.N.",
     details: "Python: Flask, Javascript: React Native",
-    img: "default.png",
+    img: "default2.png",
     content:
       "Voice automated systems is a popular trend inside and outside of development communities, becoming now a happy commodity to the public. However, there is still much to push for in terms of providing the right needs for users. Burton is designed to test and push the voice systems even further. "
   }
