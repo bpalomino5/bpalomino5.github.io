@@ -52,7 +52,12 @@ class DesktopContainer extends Component {
             <Menu.Item active={isElectronics} as={Link} to="/electronics">
               <div className="tbTextStyle">Electronics</div>
             </Menu.Item>
-            <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
+            <Button
+              as={Link}
+              inverted
+              style={{ marginLeft: "0.5em" }}
+              to="/contact"
+            >
               <div className="tbTextStyle" style={{ padding: 4 }}>
                 Contact
               </div>
