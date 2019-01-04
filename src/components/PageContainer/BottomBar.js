@@ -44,7 +44,7 @@ class BottomBar extends Component {
           <div className={`footer-inner ${mobile ? "mobile" : "desktop"}`}>
             {mobile && (
               <div className="back-to-top-nav">
-                <a href={this.state.path}>Back to Top</a>
+                <a onClick={this.props.onBacktoTop}>Back to Top</a>
               </div>
             )}
             <div className={`siteInfo ${mobile ? "mobile" : "desktop"}`}>
@@ -57,7 +57,7 @@ class BottomBar extends Component {
             </div>
             <div className="siteBrand">
               <div className={`brand-inner ${mobile ? "mobile" : "desktop"}`}>
-                <p>Powered by B.P.</p>
+                <p>B.P. Technology</p>
               </div>
             </div>
           </div>

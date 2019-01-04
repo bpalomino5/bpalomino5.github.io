@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/PageContainer.css";
+import scrollToComponent from "react-scroll-to-component";
 import { NavBarDesktop, NavBarMobile } from "./NavBar";
 import BottomBar from "./BottomBar";
 import PageHeader from "./PageHeader";
@@ -93,7 +94,8 @@ class MobileContainer extends Component {
               <div className="mbTextStyle">Electronics</div>
             </Menu.Item>
             <Button
-              as="a"
+              as={Link}
+              to="/contact"
               inverted
               style={{ marginLeft: "0.5em", marginTop: 5 }}
             >
@@ -129,7 +131,15 @@ class MobileContainer extends Component {
               </PageSegment>
             </Segment>
             {children}
-            <BottomBar mobile />
+            <BottomBar
+              mobile
+              onBacktoTop={() =>
+                scrollToComponent(this, {
+                  align: "top",
+                  duration: 700
+                })
+              }
+            />
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </Responsive>

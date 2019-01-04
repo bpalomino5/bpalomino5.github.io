@@ -55,6 +55,7 @@
 }
 
 .back-to-top-nav a {
+  cursor: pointer;
   padding: 10.5px 14px;
   color: white;
   text-decoration: none;
